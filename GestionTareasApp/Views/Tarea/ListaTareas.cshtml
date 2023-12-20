@@ -1,0 +1,39 @@
+﻿@using GestionTareasApp.Models;
+@model List<Tarea>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".btnEliminar").click(function () {
+            var objectId = $(this).data("id");
+            $.ajax({
+                url: '@Url.Action("EliminarTarea")',
+                type: "POST",
+                data: { id: objectId },
+                success: function () {
+                    // Actualizar la vista o realizar otras acciones si es necesario
+                    location.reload();
+                },
+                error: function () {
+                    alert("Error al eliminar el objeto.");
+                }
+            });
+        });
+    });
+</script>
+
+<h1>Listado de tareas:</h1>
+<form method="post">
+    <ul>
+        @foreach (var tarea in Model)
+        {
+            <li>@tarea.Titulo <button class="btnEliminar" data-id="@tarea.IdTarea">Eliminar tarea</button> </li> 
+        }
+    </ul>
+</form>
+<div>
+    <form asp-action="Crear" method="get" >
+        <button type="submit" class="btn btn-primary">Crear Nueva Tarea</button>
+    </form>   
+</div>
+

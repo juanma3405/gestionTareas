@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "I3m/H1E7/6cCz/eWjiQGLTqiDk97tP9IMj2w/Wvik2i+WuCcFDyO5TAfXQNCb8SzYpL3rXI/vyGd9Ghu5aRcwg==",
+  "success": true,
+  "projectFilePath": "D:\\Practica_C#\\GestionTareasApp\\GestionTareasApp\\GestionTareasApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\juanm\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

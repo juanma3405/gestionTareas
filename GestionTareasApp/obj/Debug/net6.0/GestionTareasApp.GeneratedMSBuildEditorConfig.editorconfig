@@ -1,0 +1,25 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = GestionTareasApp
+build_property.RootNamespace = GestionTareasApp
+build_property.ProjectDir = D:\Practica_C#\GestionTareasApp\GestionTareasApp\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\Practica_C#\GestionTareasApp\GestionTareasApp
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/Practica_C\#/GestionTareasApp/GestionTareasApp/Views/Tarea/Crear.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZWFcQ3JlYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Practica_C\#/GestionTareasApp/GestionTareasApp/Views/Tarea/ListaTareas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZWFcTGlzdGFUYXJlYXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
