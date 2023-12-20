@@ -43,6 +43,7 @@ namespace GestionTareasApp.Controllers
         [HttpPost]
         public IActionResult Crear(Tarea tarea)
         {
+            tarea.Estado = "Pendiente";
             tareas.Add(tarea);
             return RedirectToAction("ListaTareas");
         }
@@ -50,7 +51,15 @@ namespace GestionTareasApp.Controllers
         
         public IActionResult ListaTareas()
         {
-            return View(tareas);
+            List<Tarea> tareasPendientes = new List<Tarea>();
+            foreach(var tarea in tareas)
+            {
+                if (tarea.Estado == "Pendiente")
+                {
+                    tareasPendientes.Add(tarea);
+                }
+            }
+            return View(tareasPendientes);
         }
 
        
@@ -66,5 +75,17 @@ namespace GestionTareasApp.Controllers
             }
             return RedirectToAction("ListaTareas");
         }
+
+        public IActionResult CompletarTarea(int Id)
+        {
+            var tareaACompletar = tareas.Find(t => t.IdTarea == Id);
+
+            if (tareaACompletar != null)
+            {
+                tareaACompletar.Estado = "Completada";
+            }
+            return RedirectToAction("ListaTareas");
+        }
+
     }
 }

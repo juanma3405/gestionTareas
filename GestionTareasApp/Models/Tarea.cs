@@ -9,7 +9,7 @@ namespace GestionTareasApp.Models
         public string? Descripcion { get; set; }
       
         //public DateTime FechaLimite { get; set; }
-        //public string? Estado { get; set; }
+        public string? Estado { get; set; }
 
        /* public Tarea(string titulo, string descripcion) 
         {

@@ -4,22 +4,25 @@
 <div>
     <form asp-action="Crear" method="post">
         <h1>Crear tarea</h1>
-        <div>
-          <label asp-for="IdTarea">Id tarea: </label>
-          <input type="number" asp-for="IdTarea" name="IdTarea"/>
+        <div class="mb-3">
+          <label asp-for="IdTarea" class="form-label"> Id tarea: </label>
+          <input type="number" asp-for="IdTarea" name="IdTarea" class="form-control"/>
         </div>
         <div>
-          <label asp-for="Titulo">Nombre tarea: </label>
-          <input type="text" asp-for="Titulo" name="Titulo"/>
+          <label asp-for="Titulo" class="form-label"> Nombre tarea: </label>
+          <input type="text" asp-for="Titulo" name="Titulo" class="form-control"/>
         </div>
         <div>
-          <label asp-for="Descripcion">Descripcion tarea: </label>
-          <input type="text" asp-for="Descripcion" name="Descripcion"/>
+          <label asp-for="Descripcion" class="form-label"> Descripcion tarea: </label>
+          <input type="text" asp-for="Descripcion" name="Descripcion" class="form-control"/>
         </div>
         <!--div>
           <label asp-for="FechaLimite">Fecha limite tarea: </label>
           <input asp-for="FechaLimite"/>
         </div-->
-         <button type="submit">Crear</button>
+        <br />
+        <div>
+            <button type="submit" class="btn btn-primary">Crear</button>
+        </div>
     </form>
 </div>
