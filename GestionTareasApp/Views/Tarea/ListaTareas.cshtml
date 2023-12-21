@@ -42,6 +42,24 @@
     });
 </script>
 
+<!--script>
+    $(document).ready(function () {
+        $(".btnNuevaTarea").click(function () {
+            $.ajax({
+                url: '@Url.Action("Crear")',
+                type: "GET",
+                success: function () {
+                    // Actualizar la vista o realizar otras acciones si es necesario
+                    location.href = "/Tarea";
+                },
+                error: function () {
+                    alert("Error al dirigirse a vista de creacion");
+                }
+            });
+        });
+    });
+</script-->
+
 <h1>Listado de tareas:</h1>
 <form method="post">
     <ol class="list-group list-group-numbered">
@@ -56,6 +74,9 @@
 </form>
 <br/>
 <div>
+    <!--form asp-action="Crear" method="get" >
+        <button class="btnNuevaTarea btn btn-primary">Crear Nueva Tarea</button>
+    </!--form-->   
     <form asp-action="Crear" method="get" >
         <button type="submit" class="btn btn-primary">Crear Nueva Tarea</button>
     </form>   

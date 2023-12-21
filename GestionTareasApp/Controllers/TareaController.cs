@@ -43,9 +43,13 @@ namespace GestionTareasApp.Controllers
         [HttpPost]
         public IActionResult Crear(Tarea tarea)
         {
-            tarea.Estado = "Pendiente";
-            tareas.Add(tarea);
-            return RedirectToAction("ListaTareas");
+            if (ModelState.IsValid)
+            {
+                tarea.Estado = "Pendiente";
+                tareas.Add(tarea);
+                return RedirectToAction("ListaTareas");
+            }
+            return View();
         }
 
         

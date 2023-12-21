@@ -1,20 +1,22 @@
-﻿@using GestionTareasApp.Models;
-@model Tarea
+﻿@model Tarea
 
 <div>
     <form asp-action="Crear" method="post">
         <h1>Crear tarea</h1>
-        <div class="mb-3">
+        <div class="form-group">
           <label asp-for="IdTarea" class="form-label"> Id tarea: </label>
           <input type="number" asp-for="IdTarea" name="IdTarea" class="form-control"/>
+          <span asp-validation-for="IdTarea" class="text-danger"></span>
         </div>
-        <div>
+        <div class="form-group">
           <label asp-for="Titulo" class="form-label"> Nombre tarea: </label>
           <input type="text" asp-for="Titulo" name="Titulo" class="form-control"/>
+          <span asp-validation-for="Titulo" class="text-danger"></span>
         </div>
-        <div>
+        <div class="form-group">
           <label asp-for="Descripcion" class="form-label"> Descripcion tarea: </label>
           <input type="text" asp-for="Descripcion" name="Descripcion" class="form-control"/>
+          <span asp-validation-for="Descripcion" class="text-danger"></span>
         </div>
         <!--div>
           <label asp-for="FechaLimite">Fecha limite tarea: </label>
