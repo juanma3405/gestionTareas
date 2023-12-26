@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Practica_C#\\GestionTareasApp\\GestionTareasApp\\GestionTareasApp.csproj": {}
+    "D:\\JuanmaPractica\\ProyectosNet\\gestionTareas\\GestionTareasApp\\GestionTareasApp.csproj": {}
   },
   "projects": {
-    "D:\\Practica_C#\\GestionTareasApp\\GestionTareasApp\\GestionTareasApp.csproj": {
+    "D:\\JuanmaPractica\\ProyectosNet\\gestionTareas\\GestionTareasApp\\GestionTareasApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Practica_C#\\GestionTareasApp\\GestionTareasApp\\GestionTareasApp.csproj",
+        "projectUniqueName": "D:\\JuanmaPractica\\ProyectosNet\\gestionTareas\\GestionTareasApp\\GestionTareasApp.csproj",
         "projectName": "GestionTareasApp",
-        "projectPath": "D:\\Practica_C#\\GestionTareasApp\\GestionTareasApp\\GestionTareasApp.csproj",
-        "packagesPath": "C:\\Users\\juanm\\.nuget\\packages\\",
-        "outputPath": "D:\\Practica_C#\\GestionTareasApp\\GestionTareasApp\\obj\\",
+        "projectPath": "D:\\JuanmaPractica\\ProyectosNet\\gestionTareas\\GestionTareasApp\\GestionTareasApp.csproj",
+        "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
+        "outputPath": "D:\\JuanmaPractica\\ProyectosNet\\gestionTareas\\GestionTareasApp\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\juanm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -43,6 +40,16 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.25, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.25, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
@@ -67,7 +74,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

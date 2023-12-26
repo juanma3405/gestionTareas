@@ -4,6 +4,7 @@ namespace GestionTareasApp.Models
 {
     public class Tarea
     {
+        [Key]
         [Required(ErrorMessage = "El campo id es obligatorio.")]
         public int IdTarea { get; set; }
 

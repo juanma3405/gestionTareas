@@ -2,18 +2,21 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Primitives;
+using System.Threading;
 
 namespace GestionTareasApp.Controllers
 {
     public class TareaController : Controller
     {
-        private readonly IMemoryCache _memoryCache;
+        //private readonly IMemoryCache _memoryCache;
+        private readonly TareaContexto contexto;
 
-        public TareaController(IMemoryCache memoryCache)
+        public TareaController(/*IMemoryCache memoryCache*/ TareaContexto contexto)
         {
-            _memoryCache = memoryCache;
+            /*_memoryCache = memoryCache;*/
+            this.contexto = contexto;
         }
-        List<Tarea> tareas { 
+        /*List<Tarea> tareas { 
             get 
             {
                 if (!_memoryCache.TryGetValue("Tareas", out List<Tarea> tareas))
@@ -32,7 +35,7 @@ namespace GestionTareasApp.Controllers
             {
                 _memoryCache.Set("Tareas", value);
             }
-        }
+        }*/
 
         [HttpGet]
         public IActionResult Crear()
@@ -46,7 +49,9 @@ namespace GestionTareasApp.Controllers
             if (ModelState.IsValid)
             {
                 tarea.Estado = "Pendiente";
-                tareas.Add(tarea);
+                //tareas.Add(tarea);
+                contexto.Tareas.Add(tarea);
+                contexto.SaveChanges();
                 return RedirectToAction("ListaTareas");
             }
             return View();
@@ -56,7 +61,9 @@ namespace GestionTareasApp.Controllers
         public IActionResult ListaTareas()
         {
             List<Tarea> tareasPendientes = new List<Tarea>();
-            foreach(var tarea in tareas)
+            /*foreach(var tarea in tareas)*/
+            var tareas = contexto.Tareas.ToList();
+            foreach (var tarea in tareas)
             {
                 if (tarea.Estado == "Pendiente")
                 {
@@ -69,7 +76,7 @@ namespace GestionTareasApp.Controllers
        
         public IActionResult EliminarTarea(int Id)
         {
-            var tareasCopia = tareas;
+            /*var tareasCopia = tareas;
             var tareaAEliminar = tareasCopia.Find( t => t.IdTarea == Id);   
             
             if (tareaAEliminar != null)
@@ -77,16 +84,29 @@ namespace GestionTareasApp.Controllers
                 tareasCopia.Remove(tareaAEliminar);
                 tareas = tareasCopia;
             }
-            return RedirectToAction("ListaTareas");
+            return RedirectToAction("ListaTareas");*/
+            var tarea = contexto.Tareas.Find(Id);
+            if (tarea == null) { 
+            contexto.Tareas.Remove(tarea);
+            contexto.SaveChanges();
+            }
+            return RedirectToAction("ListaTareas"); 
         }
 
         public IActionResult CompletarTarea(int Id)
         {
-            var tareaACompletar = tareas.Find(t => t.IdTarea == Id);
+            /*var tareaACompletar = tareas.Find(t => t.IdTarea == Id);
 
             if (tareaACompletar != null)
             {
                 tareaACompletar.Estado = "Completada";
+            }
+            return RedirectToAction("ListaTareas");*/
+            var tarea = contexto.Tareas.Find(Id);
+            if (tarea == null)
+            {
+                tarea.Estado = "Completada";
+                contexto.SaveChanges();
             }
             return RedirectToAction("ListaTareas");
         }
