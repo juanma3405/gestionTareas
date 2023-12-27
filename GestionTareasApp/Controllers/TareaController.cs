@@ -14,11 +14,11 @@ namespace GestionTareasApp.Controllers
         {
             this.contexto = contexto;
         }
-      
-        public IActionResult ListaTareas()
+
+        public async Task<ActionResult> ListaTareas()
         {
             List<Tarea> tareasPendientes = new List<Tarea>();
-            var tareas = contexto.Tareas.ToList();
+            var tareas = await contexto.Tareas.ToListAsync();
             foreach (var tarea in tareas)
             {
                 if (tarea.Estado == "Pendiente")
@@ -26,7 +26,7 @@ namespace GestionTareasApp.Controllers
                     tareasPendientes.Add(tarea);
                 }
             }
-            return View(tareasPendientes);  
+            return View(tareasPendientes);
         }
 
 
@@ -38,47 +38,48 @@ namespace GestionTareasApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Crear(Tarea tarea)
+        public async Task<ActionResult> Crear(Tarea tarea)
         {
             if (ModelState.IsValid)
             {
                 tarea.Estado = "Pendiente";
-                contexto.Add(tarea);
-                contexto.SaveChanges();
+                await contexto.AddAsync(tarea);
+                await contexto.SaveChangesAsync();
                 return RedirectToAction(nameof(ListaTareas));
             }
             return View();
         }
 
-        public IActionResult EliminarTarea(int Id)
+        public async Task<ActionResult<Tarea>> EliminarTarea(int Id)
         {
-            var tarea = contexto.Tareas.Find(Id);
-            if (tarea == null) {
+            var tarea = await contexto.Tareas.FindAsync(Id);
+            if (tarea == null)
+            {
                 return NotFound();
             }
             return View(tarea);
         }
 
         [HttpPost]
-        public IActionResult ConfirmarEliminar(int Id)
+        public async Task<ActionResult> ConfirmarEliminar(int Id)
         {
-            var tarea = contexto.Tareas.Find(Id);
+            var tarea = await contexto.Tareas.FindAsync(Id);
             contexto.Tareas.Remove(tarea);
-            contexto.SaveChanges();
+            await contexto.SaveChangesAsync();
             return RedirectToAction(nameof(ListaTareas));
         }
-        public IActionResult CompletarTarea(int Id)
+
+        public async Task<ActionResult> CompletarTarea(int Id)
         {
-            var tarea = contexto.Tareas.Find(Id);
+            var tarea = await contexto.Tareas.FindAsync(Id);
             if (tarea == null)
             {
                 return NotFound();
             }
             tarea.Estado = "Completada";
-            contexto.SaveChanges();
+            await contexto.SaveChangesAsync();
 
             return RedirectToAction(nameof(ListaTareas));
         }
-
     }
 }
