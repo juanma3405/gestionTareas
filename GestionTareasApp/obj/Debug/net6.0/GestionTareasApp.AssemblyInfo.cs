@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GestionTareasApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+742134440f1cd17ac7a1104192099016cd3bba40")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7da122c4e761620f0decd7ba8e005b3091d118d1")]
 [assembly: System.Reflection.AssemblyProductAttribute("GestionTareasApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GestionTareasApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

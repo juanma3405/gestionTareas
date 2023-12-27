@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text.Json.Serialization;
 
@@ -20,8 +21,10 @@ namespace GestionTareasApp
             {
                 services.AddControllersWithViews();
 
-                services.AddDbContext<TareaContexto>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
+            services.AddDbContext<TareaContexto>(options =>
+            { options.UseSqlServer(Configuration.GetConnectionString("defaultConnection"));
+              options.EnableServiceProviderCaching(false);
+            });
 
             }
 
@@ -48,7 +51,7 @@ namespace GestionTareasApp
                 {
                     endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Tarea}/{action=Crear}");
+                    pattern: "{controller=Tarea}/{action=ListaTareas}");
                 });
 
             }

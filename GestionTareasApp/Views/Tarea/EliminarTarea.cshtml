@@ -1,0 +1,19 @@
+﻿@using GestionTareasApp.Models;
+@model Tarea
+
+<div class="container">
+
+    <h1>Eliminar tarea</h1>
+    <div class="alert alert-danger" role="alert">
+        <h4>¿Estas seguro que quieres eliminar la tarea?</h4>
+    </div>
+    <div>
+        <h3>Título: @Model.Titulo</h3>
+        <h4>Descripción: @Model.Descripcion</h4>
+    </div>
+    <form asp-action="ConfirmarEliminar" asp-route-id="@Model.IdTarea" method="post">
+        <input type="submit" value="Eliminar" class="btn btn-danger" />
+        <a asp-action="ListaTareas" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+
