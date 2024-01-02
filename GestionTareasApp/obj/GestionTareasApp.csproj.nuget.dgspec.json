@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\JuanmaPractica\\ProyectosNet\\gestionTareas\\GestionTareasApp\\GestionTareasApp.csproj": {}
+    "D:\\Practica_C#\\GestionTareasApp\\GestionTareasApp\\GestionTareasApp.csproj": {}
   },
   "projects": {
-    "D:\\JuanmaPractica\\ProyectosNet\\gestionTareas\\GestionTareasApp\\GestionTareasApp.csproj": {
+    "D:\\Practica_C#\\GestionTareasApp\\GestionTareasApp\\GestionTareasApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\JuanmaPractica\\ProyectosNet\\gestionTareas\\GestionTareasApp\\GestionTareasApp.csproj",
+        "projectUniqueName": "D:\\Practica_C#\\GestionTareasApp\\GestionTareasApp\\GestionTareasApp.csproj",
         "projectName": "GestionTareasApp",
-        "projectPath": "D:\\JuanmaPractica\\ProyectosNet\\gestionTareas\\GestionTareasApp\\GestionTareasApp.csproj",
-        "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-        "outputPath": "D:\\JuanmaPractica\\ProyectosNet\\gestionTareas\\GestionTareasApp\\obj\\",
+        "projectPath": "D:\\Practica_C#\\GestionTareasApp\\GestionTareasApp\\GestionTareasApp.csproj",
+        "packagesPath": "C:\\Users\\juanm\\.nuget\\packages\\",
+        "outputPath": "D:\\Practica_C#\\GestionTareasApp\\GestionTareasApp\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\juanm\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -74,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

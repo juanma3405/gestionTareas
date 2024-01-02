@@ -9,35 +9,45 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = GestionTareasApp
 build_property.RootNamespace = GestionTareasApp
-build_property.ProjectDir = D:\JuanmaPractica\ProyectosNet\gestionTareas\GestionTareasApp\
-build_property.EnableComHosting = 
-build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.ProjectDir = D:\Practica_C#\GestionTareasApp\GestionTareasApp\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\JuanmaPractica\ProyectosNet\gestionTareas\GestionTareasApp
+build_property.MSBuildProjectDirectory = D:\Practica_C#\GestionTareasApp\GestionTareasApp
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/JuanmaPractica/ProyectosNet/gestionTareas/GestionTareasApp/Views/Shared/_Layout.cshtml]
+[D:/Practica_C\#/GestionTareasApp/GestionTareasApp/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/JuanmaPractica/ProyectosNet/gestionTareas/GestionTareasApp/Views/Tarea/Crear.cshtml]
+[D:/Practica_C\#/GestionTareasApp/GestionTareasApp/Views/Tarea/Crear.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZWFcQ3JlYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/JuanmaPractica/ProyectosNet/gestionTareas/GestionTareasApp/Views/Tarea/EliminarTarea.cshtml]
+[D:/Practica_C\#/GestionTareasApp/GestionTareasApp/Views/Tarea/EditarTarea.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZWFcRWRpdGFyVGFyZWEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Practica_C\#/GestionTareasApp/GestionTareasApp/Views/Tarea/EliminarTarea.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZWFcRWxpbWluYXJUYXJlYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/JuanmaPractica/ProyectosNet/gestionTareas/GestionTareasApp/Views/Tarea/ListaTareas.cshtml]
+[D:/Practica_C\#/GestionTareasApp/GestionTareasApp/Views/Tarea/ListaTareas.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZWFcTGlzdGFUYXJlYXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/JuanmaPractica/ProyectosNet/gestionTareas/GestionTareasApp/Views/_ViewImports.cshtml]
+[D:/Practica_C\#/GestionTareasApp/GestionTareasApp/Views/Tarea/ListaTareasParcial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZWFcTGlzdGFUYXJlYXNQYXJjaWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Practica_C\#/GestionTareasApp/GestionTareasApp/Views/Tarea/VerTarea.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZWFcVmVyVGFyZWEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Practica_C\#/GestionTareasApp/GestionTareasApp/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/JuanmaPractica/ProyectosNet/gestionTareas/GestionTareasApp/Views/_ViewStart.cshtml]
+[D:/Practica_C\#/GestionTareasApp/GestionTareasApp/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

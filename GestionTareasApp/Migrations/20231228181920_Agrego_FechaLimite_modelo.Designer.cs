@@ -4,6 +4,7 @@ using GestionTareasApp;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GestionTareasApp.Migrations
 {
     [DbContext(typeof(TareaContexto))]
-    partial class TareaContextoModelSnapshot : ModelSnapshot
+    [Migration("20231228181920_Agrego_FechaLimite_modelo")]
+    partial class Agrego_FechaLimite_modelo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

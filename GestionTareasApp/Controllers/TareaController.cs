@@ -1,8 +1,7 @@
 ﻿using GestionTareasApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Primitives;
-using System.Threading;
+
 
 namespace GestionTareasApp.Controllers
 {
@@ -17,18 +16,24 @@ namespace GestionTareasApp.Controllers
 
         public async Task<ActionResult> ListaTareas()
         {
-            List<Tarea> tareasPendientes = new List<Tarea>();
             var tareas = await contexto.Tareas.ToListAsync();
-            foreach (var tarea in tareas)
-            {
-                if (tarea.Estado == "Pendiente")
-                {
-                    tareasPendientes.Add(tarea);
-                }
-            }
-            return View(tareasPendientes);
+            return View(tareas);
         }
 
+        [HttpGet]
+        public async Task<ActionResult> FiltrarTareasPorEstado (string Estado)
+        {
+            List<Tarea> tareasFiltradas;
+            if (string.IsNullOrEmpty(Estado))
+            {
+                tareasFiltradas = await contexto.Tareas.ToListAsync(); 
+            }
+            else
+            {
+                tareasFiltradas = await contexto.Tareas.Where(t => t.Estado == Estado).ToListAsync();
+            }
+            return PartialView("ListaTareasParcial",tareasFiltradas);
+        }
 
         [HttpGet]
         public IActionResult Crear()
@@ -50,6 +55,36 @@ namespace GestionTareasApp.Controllers
             return View();
         }
 
+        [HttpPost]
+        public async Task<ActionResult<Tarea>> EditarTarea (int Id)
+        {
+            var tarea = await contexto.Tareas.FindAsync(Id);
+            if (tarea == null)
+            {
+                return NotFound();
+            }
+            return View(tarea);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> ActualizarTarea( Tarea tareaActualizada)
+        {
+            if (ModelState.IsValid)
+            {
+                var tareaExistente = await contexto.Tareas.FindAsync(tareaActualizada.IdTarea);
+                if (tareaExistente != null)
+                {
+                    tareaExistente.Titulo = tareaActualizada.Titulo;
+                    tareaExistente.Descripcion = tareaActualizada.Descripcion;
+                    tareaExistente.Estado = tareaActualizada.Estado;
+                    tareaExistente.FechaLimite = tareaActualizada.FechaLimite;
+                    await contexto.SaveChangesAsync();
+                    return RedirectToAction(nameof(ListaTareas));
+                }
+            }
+            return View("EditarTarea", tareaActualizada);
+        }
+
         public async Task<ActionResult<Tarea>> EliminarTarea(int Id)
         {
             var tarea = await contexto.Tareas.FindAsync(Id);
@@ -64,7 +99,7 @@ namespace GestionTareasApp.Controllers
         public async Task<ActionResult> ConfirmarEliminar(int Id)
         {
             var tarea = await contexto.Tareas.FindAsync(Id);
-            contexto.Tareas.Remove(tarea);
+            tarea.Estado = "Eliminada";
             await contexto.SaveChangesAsync();
             return RedirectToAction(nameof(ListaTareas));
         }
@@ -80,6 +115,16 @@ namespace GestionTareasApp.Controllers
             await contexto.SaveChangesAsync();
 
             return RedirectToAction(nameof(ListaTareas));
+        }
+
+        public async Task<ActionResult<Tarea>> VerTarea(int Id)
+        {
+            var tarea = await contexto.Tareas.FindAsync(Id);
+            if (tarea == null)
+            {
+                return NotFound();
+            }
+            return View(tarea);
         }
     }
 }

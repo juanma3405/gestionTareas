@@ -13,14 +13,8 @@ namespace GestionTareasApp.Models
 
         [Required(ErrorMessage = "El campo descripcion es obligatorio.")]
         public string? Descripcion { get; set; }
-      
-        //public DateTime FechaLimite { get; set; }
+        public DateTime? FechaLimite { get; set; }
         public string? Estado { get; set; }
 
-       /* public Tarea(string titulo, string descripcion) 
-        {
-            this.Titulo = titulo;
-            this.Descripcion = descripcion;
-        }*/
     }
 }

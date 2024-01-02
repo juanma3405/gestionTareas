@@ -1,0 +1,16 @@
+﻿@model List<Tarea>
+    <div class="container">
+    <div>
+        <form method="post">
+        <ol class="list-group list-group-numbered">
+            @foreach (var tarea in Model)
+            {
+                <li  class="list-group-item d-flex justify-content-between align-items-start">@tarea.Titulo
+                    <button asp-action="VerTarea" asp-route-id="@tarea.IdTarea" class="btn btn-success"> Ver tarea</button>
+                </li> 
+            }
+        </ol>
+        </form>
+    </div>
+    <br/>
+</div>

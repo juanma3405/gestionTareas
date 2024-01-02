@@ -1,0 +1,47 @@
+﻿@model Tarea
+
+<div class="container">
+    <h1>Tarea</h1>
+    <div class="container">
+        <h5> Titulo: 
+            <span> @Model.Titulo </span>
+        </h5>
+        <h5> Descripcion: 
+            <span> @Model.Descripcion </span>
+        </h5>
+        <h5> Estado: 
+            <span> @Model.Estado </span>
+        </h5>
+        <h5> Fecha limite: 
+            <span> @Model.FechaLimite </span>
+        </h5>
+    </div>
+    <br/>
+    <div>
+        @if (Model.Estado == "Pendiente")
+        {
+            <form method="post">
+                 <button class="btn btn-primary" asp-action="EditarTarea" asp-route-id="@Model.IdTarea">Editar tarea</button>
+                 <button class="btn btn-success" asp-action="CompletarTarea" asp-route-id="@Model.IdTarea">Completar tarea</button>  
+                 <button class="btn btn-danger" asp-action="EliminarTarea" asp-route-id="@Model.IdTarea">Eliminar tarea</button>
+            </form>
+        }
+        @if (Model.Estado == "Completada")
+        {
+            <form method="post">
+                <button class="btn btn-primary" asp-action="EditarTarea" asp-route-id="@Model.IdTarea">Editar tarea</button> 
+                <button class="btn btn-danger" asp-action="EliminarTarea" asp-route-id="@Model.IdTarea">Eliminar tarea</button>
+            </form>
+        }
+        @if (Model.Estado == "Eliminada")
+        {
+            <form method="post">
+                <button class="btn btn-primary" asp-action="EditarTarea" asp-route-id="@Model.IdTarea">Editar tarea</button>
+            </form>
+        }
+        <br/>
+        <div>
+            <a asp-action="ListaTareas" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </div>
+</div>
