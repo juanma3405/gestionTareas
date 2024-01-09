@@ -1,10 +1,12 @@
 ﻿using GestionTareasApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 
 namespace GestionTareasApp.Controllers
 {
+    [Authorize]
     public class TareaController : Controller
     {
         private readonly TareaContexto contexto;

@@ -1,42 +1,53 @@
 ﻿@model List<Tarea>
-<div class="container">
-    <br />
-    <div>
-        <select class="form-select" aria-label="Default select example" id="seleccionEstado" onchange="filtrarXEstado()">
-            <option selected value="">Lista de tareas</option>
-            <option value="Pendiente">Pendientes</option>
-            <option value="Completada">Completadas</option>
-            <option value="Eliminada">Eliminadas</option>
-        </select>
-    </div>
-    <br />
-    
-    <div id="listaTareasParcial">
-        @Html.Partial("ListaTareasParcial", Model)
-    </div>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script>
-        function filtrarXEstado() {
-            var estado = $('#seleccionEstado').val();
-
-            $.ajax({
-                url: '@Url.Action("FiltrarTareasPorEstado", "Tarea")',
-                type: 'GET',
-                data: { Estado: estado },
-                success: function (result) {
-                    $('#listaTareasParcial').html(result);
-                },
-                error: function (error) {
-                    console.error('Error filtering tasks: ' + error);
-                }
-            });
+    <div class="container">
+        <br />
+        @if (User.Identity.IsAuthenticated){
+            <form method="get" asp-controller="Usuario" asp-action="CerrarSesion">
+                <div class="alert alert-success" role="alert">
+                    <h1>Bienvenido @User.Identity.Name</h1>
+                    <button class="navbar-brand" type="submit" style="width:auto" class="nav-link btn btn-link py-0">
+                        Cerrar sesión
+                    </button>
+                </div>
+            </form>
         }
-    </script>
-    <br/>
-    <div>
-        <form asp-action="Crear" method="get" >
-            <button type="submit" class="btn btn-primary">Crear Nueva Tarea</button>
-        </form>   
+
+        <div>
+            <select class="form-select" aria-label="Default select example" id="seleccionEstado" onchange="filtrarXEstado()">
+                <option selected value="">Lista de tareas</option>
+                <option value="Pendiente">Pendientes</option>
+                <option value="Completada">Completadas</option>
+                <option value="Eliminada">Eliminadas</option>
+            </select>
+        </div>
+        <br />
+    
+        <div id="listaTareasParcial">
+            @Html.Partial("ListaTareasParcial", Model)
+        </div>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script>
+            function filtrarXEstado() {
+                var estado = $('#seleccionEstado').val();
+
+                $.ajax({
+                    url: '@Url.Action("FiltrarTareasPorEstado", "Tarea")',
+                    type: 'GET',
+                    data: { Estado: estado },
+                    success: function (result) {
+                        $('#listaTareasParcial').html(result);
+                    },
+                    error: function (error) {
+                        console.error('Error filtering tasks: ' + error);
+                    }
+                });
+            }
+        </script>
+        <br/>
+        <div>
+            <form asp-action="Crear" method="get" >
+                <button type="submit" class="btn btn-primary">Crear Nueva Tarea</button>
+            </form>   
+        </div>
     </div>
-</div>
 

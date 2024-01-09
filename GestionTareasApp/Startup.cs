@@ -1,10 +1,7 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using System.IdentityModel.Tokens.Jwt;
-using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GestionTareasApp
 {
@@ -19,14 +16,39 @@ namespace GestionTareasApp
 
             public void ConfigureServices(IServiceCollection services)
             {
-                services.AddControllersWithViews();
+
+            services.AddControllersWithViews();
 
             services.AddDbContext<TareaContexto>(options =>
             { options.UseSqlServer(Configuration.GetConnectionString("defaultConnection"));
-              options.EnableServiceProviderCaching(false);
+              //options.EnableServiceProviderCaching(false);
             });
 
-            }
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<TareaContexto>()
+                .AddDefaultTokenProviders();
+
+            services.ConfigureApplicationCookie(options => options.LoginPath = "/Usuario/IniciarSesion");
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = "/Usuario/IniciarSesion";
+                    options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+                });
+
+            services.AddControllersWithViews(options =>
+            {
+                options.Filters.Add(
+                    new ResponseCacheAttribute
+                    {
+                        NoStore = true,
+                        Location = ResponseCacheLocation.None,
+                    }
+                    );
+            });
+            
+        }
 
             public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
             {
@@ -41,9 +63,11 @@ namespace GestionTareasApp
 
                 app.UseHttpsRedirection();
                 
-                app.UseStaticFiles();
+                app.UseStaticFiles(); 
 
                 app.UseRouting();
+
+                app.UseAuthentication();
 
                 app.UseAuthorization();
 
@@ -51,7 +75,7 @@ namespace GestionTareasApp
                 {
                     endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Tarea}/{action=ListaTareas}");
+                    pattern: "{controller=Usuario}/{action=IniciarSesion}");
                 });
 
             }
