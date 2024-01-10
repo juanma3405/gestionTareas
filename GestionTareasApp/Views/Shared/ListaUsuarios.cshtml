@@ -1,0 +1,19 @@
+﻿@model List<IdentityUser>
+<div class="container">
+    <br/>
+    <div>
+        <form method="post">
+            <ol class="list-group list-group-numbered">
+                @foreach (var usuario in Model)
+                {
+                    <li  class="list-group-item d-flex justify-content-between align-items-start">@usuario.Email
+                        <button asp-controller="Usuario" asp-action="HacerAdmin" asp-route-email="@usuario.Email" class="btn btn-success"> Asignar rol de administrador</button>
+                        <button asp-controller="Usuario" asp-action="RemoverAdmin" asp-route-email="@usuario.Email" class="btn btn-danger"> Remover rol de administrador</button>
+                    </li> 
+                }
+            </ol>
+        </form>
+    </div> 
+    <br/>
+    <a asp-controller="Tarea" asp-action="ListaTareas" class="btn btn-secondary">Volver a lista de tareas</a>
+</div>

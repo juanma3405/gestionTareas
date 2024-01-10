@@ -49,5 +49,14 @@
                 <button type="submit" class="btn btn-primary">Crear Nueva Tarea</button>
             </form>   
         </div>
-    </div>
+        <div>
+        <br/>
+        @if (User.HasClaim("esAdmin", "1"))
+        {
+            <form method="get" asp-controller="Usuario" asp-action="ListaUsuarios">
+                <button type="submit" class="btn btn-primary">Ver usuarios</button>
+            </form>
+        }
+        </div>
+</div>
 

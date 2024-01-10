@@ -35,6 +35,7 @@ namespace GestionTareasApp
                 {
                     options.LoginPath = "/Usuario/IniciarSesion";
                     options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+                    options.AccessDeniedPath = "/Usuario/IniciarSesion";
                 });
 
             services.AddControllersWithViews(options =>
@@ -47,7 +48,12 @@ namespace GestionTareasApp
                     }
                     );
             });
-            
+
+            services.AddAuthorization(opciones =>
+            {
+                opciones.AddPolicy("EsAdmin", política => política.RequireClaim("esAdmin"));
+            });
+
         }
 
             public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

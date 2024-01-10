@@ -22,18 +22,24 @@
         {
             <form method="post">
                  <button class="btn btn-primary" asp-action="EditarTarea" asp-route-id="@Model.IdTarea">Editar tarea</button>
-                 <button class="btn btn-success" asp-action="CompletarTarea" asp-route-id="@Model.IdTarea">Completar tarea</button>  
-                 <button class="btn btn-danger" asp-action="EliminarTarea" asp-route-id="@Model.IdTarea">Eliminar tarea</button>
+                 <button class="btn btn-success" asp-action="CompletarTarea" asp-route-id="@Model.IdTarea">Completar tarea</button> 
+                 @if (User.HasClaim("esAdmin","1"))
+                    {
+                        <button class="btn btn-danger" asp-action="EliminarTarea" asp-route-id="@Model.IdTarea">Eliminar tarea</button>
+                    }
             </form>
         }
         @if (Model.Estado == "Completada")
         {
             <form method="post">
                 <button class="btn btn-primary" asp-action="EditarTarea" asp-route-id="@Model.IdTarea">Editar tarea</button> 
-                <button class="btn btn-danger" asp-action="EliminarTarea" asp-route-id="@Model.IdTarea">Eliminar tarea</button>
+                @if (User.HasClaim("esAdmin","1"))
+                    {
+                        <button class="btn btn-danger" asp-action="EliminarTarea" asp-route-id="@Model.IdTarea">Eliminar tarea</button>
+                    }
             </form>
         }
-        @if (Model.Estado == "Eliminada")
+        @if (Model.Estado == "Eliminada" && User.HasClaim("esAdmin","1")) 
         {
             <form method="post">
                 <button class="btn btn-primary" asp-action="EditarTarea" asp-route-id="@Model.IdTarea">Editar tarea</button>

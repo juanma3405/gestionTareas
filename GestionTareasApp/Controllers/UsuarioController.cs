@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
 namespace GestionTareasApp.Controllers
 {
@@ -74,6 +76,8 @@ namespace GestionTareasApp.Controllers
                     new ClaimsPrincipal(claimsIdentity),
                     properties);
 
+               // await HacerAdmin(login.Email);
+
                 return RedirectToAction("ListaTareas","Tarea");
             }
             else
@@ -88,6 +92,28 @@ namespace GestionTareasApp.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             await gestionLogin.SignOutAsync();
             return RedirectToAction(nameof(IniciarSesion));
+        }
+
+        public async Task<ActionResult> ListaUsuarios()
+        {
+            var usuarios = await gestionUsuario.Users.ToListAsync();
+            return View(usuarios);
+        }
+
+        [HttpPost("HacerAdmin", Name = "hacerAdmin")]
+        public async Task<ActionResult> HacerAdmin(string email)
+        {
+            var usuario = await gestionUsuario.FindByEmailAsync(email);
+            await gestionUsuario.AddClaimAsync(usuario, new Claim("esAdmin", "1"));
+            return NoContent();
+        }
+
+        [HttpPost("RemoverAdmin", Name = "removerAdmin")]
+        public async Task<ActionResult> RemoverAdmin(string email)
+        {
+            var usuario = await gestionUsuario.FindByEmailAsync(email);
+            await gestionUsuario.RemoveClaimAsync(usuario, new Claim("esAdmin", "1"));
+            return NoContent();
         }
     }
 
