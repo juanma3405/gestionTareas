@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using GestionTareasApp.ViewModels;
 
 namespace GestionTareasApp.Controllers
 {
@@ -13,11 +14,13 @@ namespace GestionTareasApp.Controllers
     {
         private readonly UserManager<IdentityUser> gestionUsuario;
         private readonly SignInManager<IdentityUser> gestionLogin;
+        private readonly RoleManager<IdentityRole> gestionRol;
 
-        public UsuarioController(UserManager<IdentityUser> gestionUsuario, SignInManager<IdentityUser> gestionLogin)
+        public UsuarioController(UserManager<IdentityUser> gestionUsuario, SignInManager<IdentityUser> gestionLogin, RoleManager<IdentityRole> gestionRol)
         {
             this.gestionUsuario = gestionUsuario;
             this.gestionLogin = gestionLogin;
+            this.gestionRol = gestionRol;
         }
 
         public IActionResult Registro()
@@ -48,8 +51,9 @@ namespace GestionTareasApp.Controllers
             }
         }
 
-        public IActionResult IniciarSesion()
+        public /*async Task<ActionResult>*/ IActionResult IniciarSesion()
         {
+            //await CrearRoles();
             return View();
         }
 
@@ -96,25 +100,74 @@ namespace GestionTareasApp.Controllers
 
         public async Task<ActionResult> ListaUsuarios()
         {
+            /*var usuarios = await gestionUsuario.Users.ToListAsync();
+            return View(usuarios);*/
             var usuarios = await gestionUsuario.Users.ToListAsync();
-            return View(usuarios);
+            var roles = await gestionRol.Roles.ToListAsync();
+
+            var model = new ListaUsuariosViewModel
+            {
+                Usuarios = usuarios,
+                Roles = roles,
+                UserManager = gestionUsuario
+            };
+
+            return View(model);
         }
 
         [HttpPost("HacerAdmin", Name = "hacerAdmin")]
         public async Task<ActionResult> HacerAdmin(string email)
         {
-            var usuario = await gestionUsuario.FindByEmailAsync(email);
+            /*var usuario = await gestionUsuario.FindByEmailAsync(email);
             await gestionUsuario.AddClaimAsync(usuario, new Claim("esAdmin", "1"));
-            return NoContent();
+            return NoContent();*/
+            var usuario = await gestionUsuario.FindByEmailAsync(email);
+            if (usuario != null)
+            {
+                await gestionUsuario.AddToRoleAsync(usuario, "Administrador");
+
+            }
+            //return NoContent();
+            return View(usuario);
         }
 
         [HttpPost("RemoverAdmin", Name = "removerAdmin")]
         public async Task<ActionResult> RemoverAdmin(string email)
         {
-            var usuario = await gestionUsuario.FindByEmailAsync(email);
+            /*var usuario = await gestionUsuario.FindByEmailAsync(email);
             await gestionUsuario.RemoveClaimAsync(usuario, new Claim("esAdmin", "1"));
-            return NoContent();
+            return NoContent();*/
+            var usuario = await gestionUsuario.FindByEmailAsync(email);
+            if (usuario != null)
+            {
+                await gestionUsuario.RemoveFromRoleAsync(usuario, "Administrador");
+            }
+            //return NoContent();
+            return View(usuario);
         }
+
+        /*private async Task CrearRoles()
+        {
+            string[] roles = { "Administrador", "Usuario" };
+            IdentityResult resultadoRol;
+
+            foreach (var rol in roles)
+            {
+                var existeRol = await gestionRol.RoleExistsAsync(rol);
+
+                if (!existeRol)
+                {
+                    resultadoRol = await gestionRol.CreateAsync(new IdentityRole(rol));
+                }
+            }
+
+            /*var usuario = await gestionUsuario.FindByEmailAsync("juanprueba@gmail.com");
+
+            if (usuario != null)
+            {
+                await gestionUsuario.AddToRoleAsync(usuario, "Administrador");
+            }
+        }*/
     }
 
 }

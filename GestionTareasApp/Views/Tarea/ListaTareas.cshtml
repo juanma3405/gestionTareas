@@ -1,15 +1,27 @@
 ﻿@model List<Tarea>
-    <div class="container">
+<div class="container">
         <br />
         @if (User.Identity.IsAuthenticated){
-            <form method="get" asp-controller="Usuario" asp-action="CerrarSesion">
+            <div>
                 <div class="alert alert-success" role="alert">
                     <h1>Bienvenido @User.Identity.Name</h1>
-                    <button class="navbar-brand" type="submit" style="width:auto" class="nav-link btn btn-link py-0">
-                        Cerrar sesión
-                    </button>
+                    <form method="get" asp-controller="Usuario" asp-action="CerrarSesion">
+                        <button class="navbar-brand" type="submit" style="width:auto">
+                            Cerrar sesión
+                        </button>
+                    </form>
+                    <br/>
+                    <div>
+                        @*if (User.HasClaim("esAdmin", "1"))*@
+                        @if (User.IsInRole("Administrador"))
+                        {
+                            <form method="get" asp-controller="Usuario" asp-action="ListaUsuarios">
+                                <button type="submit" class="btn btn-primary">Ver usuarios</button>
+                            </form>
+                        }
+                    </div>
                 </div>
-            </form>
+            </div>
         }
 
         <div>
@@ -49,14 +61,6 @@
                 <button type="submit" class="btn btn-primary">Crear Nueva Tarea</button>
             </form>   
         </div>
-        <div>
-        <br/>
-        @if (User.HasClaim("esAdmin", "1"))
-        {
-            <form method="get" asp-controller="Usuario" asp-action="ListaUsuarios">
-                <button type="submit" class="btn btn-primary">Ver usuarios</button>
-            </form>
-        }
-        </div>
 </div>
+
 

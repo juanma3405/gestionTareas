@@ -1,6 +1,7 @@
 ﻿using GestionTareasApp.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -88,7 +89,8 @@ namespace GestionTareasApp.Controllers
             return View("EditarTarea", tareaActualizada);
         }
 
-        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme, Policy = "EsAdmin")]
+        //[Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme, Policy = "EsAdmin")]
+        [Authorize(Roles="Administrador")]
         public async Task<ActionResult<Tarea>> EliminarTarea(int Id)
         {
             var tarea = await contexto.Tareas.FindAsync(Id);

@@ -1,0 +1,10 @@
+﻿@model IdentityUser
+
+<div class="container">
+    <br/>
+    <div class="alert alert-success" role="alert">
+        <h4>@Model.UserName ahora es administrador </h4>
+    </div>
+    <br/>
+    <a asp-action="ListaUsuarios" class="btn btn-secondary">Volver a lista de usuarios </a>
+</div>

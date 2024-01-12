@@ -7,6 +7,7 @@ namespace GestionTareasApp
 {
     public class Startup
     {
+            
             public Startup(IConfiguration configuration)
             {
                 Configuration = configuration;
@@ -49,10 +50,10 @@ namespace GestionTareasApp
                     );
             });
 
-            services.AddAuthorization(opciones =>
+            /*services.AddAuthorization(opciones =>
             {
                 opciones.AddPolicy("EsAdmin", política => política.RequireClaim("esAdmin"));
-            });
+            });*/
 
         }
 
@@ -85,5 +86,5 @@ namespace GestionTareasApp
                 });
 
             }
-        }
+    }
 }
