@@ -39,7 +39,7 @@ namespace GestionTareasApp.Controllers
             };
 
             var resultado = await gestionUsuario.CreateAsync(usuario, registro.Contrasenia);
-
+           
             if (resultado.Succeeded)
             {
                 return RedirectToAction(nameof(IniciarSesion));

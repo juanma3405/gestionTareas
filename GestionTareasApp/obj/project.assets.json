@@ -2236,11 +2236,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Practica_C#\\GestionTareasApp\\GestionTareasApp\\GestionTareasApp.csproj",
+      "projectUniqueName": "D:\\Practica_CSharp\\GestionTareasApp\\GestionTareasApp\\GestionTareasApp.csproj",
       "projectName": "GestionTareasApp",
-      "projectPath": "D:\\Practica_C#\\GestionTareasApp\\GestionTareasApp\\GestionTareasApp.csproj",
+      "projectPath": "D:\\Practica_CSharp\\GestionTareasApp\\GestionTareasApp\\GestionTareasApp.csproj",
       "packagesPath": "C:\\Users\\juanm\\.nuget\\packages\\",
-      "outputPath": "D:\\Practica_C#\\GestionTareasApp\\GestionTareasApp\\obj\\",
+      "outputPath": "D:\\Practica_CSharp\\GestionTareasApp\\GestionTareasApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
